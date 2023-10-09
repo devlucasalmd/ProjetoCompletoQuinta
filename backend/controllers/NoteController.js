@@ -3,7 +3,7 @@ const Note = require("../models/Note")
 module.exports = class NotesController{
   static async getAll(req,res){
     try {
-      const notes =await  Note.findAll();
+      const notes = await  Note.findAll();
       res.status(201).json(notes)
     } catch (error) {
       console.log(error)

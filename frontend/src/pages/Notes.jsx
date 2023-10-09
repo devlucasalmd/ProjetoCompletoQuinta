@@ -5,10 +5,10 @@ import { useState } from 'react'
 import axios from 'axios'
 import Note from '../components/Note/Note'
 
-
 function Notes() {
   const [showModal,setShowModal] = useState(false)
   const [notes,setNotes] = useState([])
+
   const pegarTodasAsNotesDaApi = ()=>{
     axios.get('http://localhost:3001/notes')
       .then(res=>{
@@ -24,8 +24,12 @@ function Notes() {
       // console.log(res)
       // console.log(res.data)
       setNotes([...notes,res.data.note])
+      
+    
       // pegarTodasAsNotesDaApi()
-    }).catch(err=>console.log("erro ao pegar os dados da api",err))
+    }).catch(err=>{
+      console.log("erro ao cadastrar os dados na api",err)
+    })
   }
   const deleteNote = (id)=>{
     axios.delete(`http://localhost:3001/notes/deleteNote/${id}`)
